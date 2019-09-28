@@ -5,6 +5,55 @@ public class RegExMain {
 		
 		String string = "I am a String. Yes, I am.";
 		System.out.println(string);
+		String yourString = string.replaceAll("I", "You");
+		System.out.println(yourString);
+		
+		
+		String alphanumeric = "abcHJDh92reklfj8329";
+		System.out.println(alphanumeric);
+		System.out.println(alphanumeric.replaceAll(".", "Y")); // '.' means any character
+		System.out.println(alphanumeric.replaceAll("^abcH", "YYY")); // ^ means the beginning of String
+		
+		System.out.println(alphanumeric.matches("^hello")); // returns false
+		System.out.println(alphanumeric.matches("^abc")); // returns false! the entire String has to match
+		System.out.println(alphanumeric.matches("abcHJDh92reklfj8329")); // return true
+		System.out.println(alphanumeric.matches("^abcHJDh92reklfj8329")); // return true
+		
+		System.out.println(alphanumeric.replaceAll("329$", "111")); // $ = end of the pattern
+		System.out.println(alphanumeric.replaceAll("[92]", "Y")); // replaces all characters in the brackets
+		System.out.println(alphanumeric.replaceAll("[2][r2]", "X")); // replaces [] only if followed by []
+		
+		System.out.println("harry".replaceAll("[Hh]arry", "Harry")); // changes all harry instances to Harry
+		
+		
+		// ------Character classes-------
+		
+		System.out.println(alphanumeric.replaceAll("[^sjfhk7463]", "X")); // 'all except'
+		System.out.println(alphanumeric.replaceAll("[a-fA-F3-8]", "Y")); // '-' range
+		System.out.println(alphanumeric.replaceAll("(?i)[a-f3-8]", "X")); // '(?I)' ignores case, (?iu) with unicode string
+		System.out.println(alphanumeric.replaceAll("\\d", "X")); // '\\d' all digits
+		System.out.println(alphanumeric.replaceAll("\\D", "X")); // '\\d' all NON-digits
+		
+		
+		String hasWhiteSpace = "I have blank and\ta tab, and also a newline\n";
+		System.out.println(hasWhiteSpace);
+		System.out.println(hasWhiteSpace.replaceAll("\\s", "")); // removes white space, '\\S' all non-white space
+		System.out.println(hasWhiteSpace.replaceAll("\t", "")); // removes only tab
+		
+		System.out.println(alphanumeric.replaceAll("\\w", "X")); // a-z, A-Z, 0-9, _
+		System.out.println(hasWhiteSpace.replaceAll("\\w", "X"));
+		System.out.println(alphanumeric.replaceAll("\\W", "X")); // capital W is the opposite
+		System.out.println(hasWhiteSpace.replaceAll("\\W", "X"));
+		
+		System.out.println(hasWhiteSpace.replaceAll("\\b", "X")); // boundaries
+		System.out.println(hasWhiteSpace.replaceAll("\\B", "X"));
+		
+		
+		// ------Quantifiers-----
+		
+		
+		
+		
 		
 	}
 }
