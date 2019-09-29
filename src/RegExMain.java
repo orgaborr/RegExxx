@@ -51,7 +51,14 @@ public class RegExMain {
 		
 		// ------Quantifiers-----
 		
+		String newAlphanumeric = "hsfjjjj97497999988gfjdk";
+		System.out.println(newAlphanumeric);
 		
+		System.out.println(newAlphanumeric.replaceAll("^hsfj{4}", "YYY")); // {number} times the preceding letter
+		System.out.println(newAlphanumeric.replaceAll("^hsfj+", "YYY")); // 1 or more of preceding letter
+		System.out.println(newAlphanumeric.replaceAll("^hsfj*", "YYY")); // 0 or more of the preceding letter
+		System.out.println(newAlphanumeric.replaceAll("^hsfj{2,5}", "YYY")); // 2 to 5 j-s
+		System.out.println(newAlphanumeric.replaceAll("j+9*7", "Y"));
 		
 		
 		
