@@ -71,7 +71,7 @@ public class RegExMain {
 		htmlText.append("<h2>Summary</h2>");
 		htmlText.append("<p>Summary content</p>");
 		
-		String h2Pattern = "(<h2>)";
+		String h2Pattern = "<h2>";
 		Pattern pattern = Pattern.compile(h2Pattern); // we could add Pattern.CASE_INSENSITIVE modifier as a second parameter
 		Matcher matcher = pattern.matcher(htmlText);
 		System.out.println(matcher.matches()); // has to match the whole String
@@ -83,6 +83,20 @@ public class RegExMain {
 			System.out.println("Occurance " + count + " : " + matcher.start() + " to " + matcher.end());
 		}
 		
+		String h2GroupPattern = "(<h2>)(.*?)(</h2>)"; // ? turns * into a lazy quantifier
+		Pattern groupPattern = Pattern.compile(h2GroupPattern);
+		Matcher groupMatcher = groupPattern.matcher(htmlText);
+		System.out.println(groupMatcher.matches());
+		groupMatcher.reset();
+		
+		while(groupMatcher.find()) {
+			System.out.println("Occurance: " + groupMatcher.group(0)); // means the whole pattern
+		}
+		groupMatcher.reset();
+		
+		while(groupMatcher.find()) {
+			System.out.println("Occurance: " + groupMatcher.group(2)); // 2 only the second group ( )
+		}
 		
 		
 	}
