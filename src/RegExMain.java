@@ -62,6 +62,7 @@ public class RegExMain {
 //		System.out.println(newAlphanumeric.replaceAll("^hsfj{2,5}", "YYY")); // 2 to 5 j-s
 //		System.out.println(newAlphanumeric.replaceAll("j+9*7", "Y"));
 		
+		
 		// -----Matchers and Patterns-----
 		
 		StringBuilder htmlText = new StringBuilder("<h1>My heading</h1>");
@@ -83,6 +84,9 @@ public class RegExMain {
 			System.out.println("Occurance " + count + " : " + matcher.start() + " to " + matcher.end());
 		}
 		
+		
+		// -----Groups-----
+		
 		String h2GroupPattern = "(<h2>)(.*?)(</h2>)"; // ? turns * into a lazy quantifier
 		Pattern groupPattern = Pattern.compile(h2GroupPattern);
 		Matcher groupMatcher = groupPattern.matcher(htmlText);
@@ -97,6 +101,30 @@ public class RegExMain {
 		while(groupMatcher.find()) {
 			System.out.println("Occurance: " + groupMatcher.group(2)); // 2 only the second group ( )
 		}
+		
+		
+		// -----Logical Operators-----
+		
+		System.out.println("harry".replaceAll("[H|h]arry", "Larry")); // | or operator
+		
+		//[^abc] means all except a, b and c
+		String tvTest = "tstvtkt";
+		//String tNotVRegExp = "t[^v]"; //has to be followed by a character except v
+		String tNotVRegExp = "t(?!v)"; // ? look ahead syntax, ! look ahead negative, can be 0 characters after
+		Pattern tNotVPattern = Pattern.compile(tNotVRegExp);
+		Matcher tNotVMatcher = tNotVPattern.matcher(tvTest);
+		
+		count = 0;
+		
+		while(tNotVMatcher.find()) {
+			System.out.println("Occurance " + count + " : " + tNotVMatcher.start() +
+					" to " + tNotVMatcher.end());
+		}
+		// t(?=v) would find ts followed by a v without including the v
+		
+		
+		
+		
 		
 		
 	}
